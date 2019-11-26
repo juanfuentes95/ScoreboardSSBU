@@ -68,8 +68,6 @@ namespace Scoreboards7r
             CreateTextFile(@filePath, "0");
             filePath = @"Resources\descripcionTorneo.txt";
             CreateTextFile(@filePath, descripcionTorneo.Text);
-            filePath = @"Resources\PlayersDatabase.txt";
-            CreateTextFile(@filePath, "");
         }
 
 
