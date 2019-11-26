@@ -18,4 +18,4 @@ Pull requests are welcome. Please make sure to update tests as appropriate.
 
 ## Licensing
 
-ScoreboardS7R is licensed under the Apache License, Version 2.0. See [LICENSE] for the full license text.
+ScoreboardS7R is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/juanfuentes95/Scoreboards7r/blob/master/LICENSE) for the full license text.
