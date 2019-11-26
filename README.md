@@ -15,3 +15,7 @@ Smash Bros. Ultimate's Scoreboard for OBS Studio in C#.
 ## Contributing
 
 Pull requests are welcome. Please make sure to update tests as appropriate.
+
+## Licensing
+
+ScoreboardS7R is licensed under the Apache License, Version 2.0. See [LICENSE] for the full license text.
