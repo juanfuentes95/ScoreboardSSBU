@@ -571,5 +571,61 @@ namespace Scoreboards7r
             ghk6 = new Hotkeys(Constants.ALT, Keys.S, this);
             ghk6.Register();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string strPlayerName1 = File.ReadAllText(@"Resources\PlayerName1.txt");
+            string strPlayerName2 = File.ReadAllText(@"Resources\PlayerName2.txt");
+
+            string strScorePlayer1 = File.ReadAllText(@"Resources\ScorePlayer1.txt");
+            string strScorePlayer2 = File.ReadAllText(@"Resources\ScorePlayer2.txt");
+
+            string strPlayerTeam1 = File.ReadAllText(@"Resources\PlayerTeam1.txt");
+            string strPlayerTeam2 = File.ReadAllText(@"Resources\PlayerTeam2.txt");
+
+            PlayerName1.Text = strPlayerName2;
+            PlayerName2.Text = strPlayerName1;
+
+            ScorePlayer1.Text = strScorePlayer2;
+            ScorePlayer2.Text = strScorePlayer1;
+
+            PlayerTeam1.Text = strPlayerTeam2;
+            PlayerTeam2.Text = strPlayerTeam1;
+
+
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
+            {
+                file.WriteLine(strPlayerName2);
+            }
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
+            {
+                file.WriteLine(strPlayerName1);
+            }
+
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+            {
+                file.WriteLine(strScorePlayer2);
+            }
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+            {
+                file.WriteLine(strScorePlayer1);
+            }
+
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
+            {
+                file.WriteLine(strPlayerTeam2);
+            }
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
+            {
+                file.WriteLine(strPlayerTeam1);
+            }
+
+        }
     }
 }
