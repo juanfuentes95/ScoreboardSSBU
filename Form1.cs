@@ -13,6 +13,15 @@ namespace Scoreboards7r
 {
     public partial class Form1 : Form
     {
+
+        private Hotkeys ghk1;
+        private Hotkeys ghk2;
+        private Hotkeys ghk3;
+        private Hotkeys ghk4;
+        private Hotkeys ghk5;
+        private Hotkeys ghk6;
+
+
         //Player List
         List<Player> PlayerList = new List<Player>();
 
@@ -37,17 +46,14 @@ namespace Scoreboards7r
             UpdatePlayers();
 
             //HotKeys Config
-            this.KeyPreview = true;
-            this.KeyDown += new KeyEventHandler(MainForm_KeyDown);
+            //this.KeyPreview = true;
+            //this.KeyDown += new KeyEventHandler(MainForm_KeyDown);
 
             //Combobox default
             BracketComboBox.SelectedIndex = 0; //0 = Winner Bracket; 1 = Looser Bracket
             RoundComboBox.SelectedIndex = 0; //0 = Round; 1 = Finals; 2 = Grand Finals
 
             this.groupBox1.Click += new System.EventHandler(this.groupBox1_Click);
-            this.groupBox2.Click += new System.EventHandler(this.groupBox2_Click);
-            this.groupBox3.Click += new System.EventHandler(this.groupBox3_Click);
-            this.groupBox4.Click += new System.EventHandler(this.groupBox4_Click);
 
         }
         void InitializeNamesAndScoresAndDescription()
@@ -69,6 +75,34 @@ namespace Scoreboards7r
             filePath = @"Resources\descripcionTorneo.txt";
             CreateTextFile(@filePath, descripcionTorneo.Text);
         }
+   
+       
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == Constants.WM_HOTKEY_MSG_ID)
+            {
+                Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+                int modifier = (int)m.LParam & 0xFFFF;
+                if (modifier == Constants.ALT && key == Keys.D1)
+                    UpScorePlayer1();
+                else if (modifier == Constants.ALT && key == Keys.D2)
+                    UpScorePlayer2();
+                else if (modifier == Constants.ALT && key == Keys.Q)
+                    DownScorePlayer1();
+                else if (modifier == Constants.ALT && key == Keys.W)
+                    DownScorePlayer2();
+                else if (modifier == Constants.ALT && key == Keys.A)
+                    ResetScorePlayer1();
+                else if (modifier == Constants.ALT && key == Keys.S)
+                    ResetScorePlayer2();
+
+            }
+            base.WndProc(ref m);
+        }
+
+
+
+
 
 
         //_____________________________________________________________________________
@@ -98,6 +132,84 @@ namespace Scoreboards7r
 
         //_____________________________________________________________________________
         //-------------------------Hotkeys Configuration-------------------------------
+
+        private void UpScorePlayer1()
+        {
+            int score = Convert.ToInt32(ScorePlayer1.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+            {
+                file.WriteLine(Convert.ToString(score + 1));
+            }
+            ScorePlayer1.Text = Convert.ToString(score + 1);
+        }
+        private void DownScorePlayer1()
+        {
+            int score = Convert.ToInt32(ScorePlayer1.Text);
+            if (score > 0)
+            {
+                //Write Score
+                using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                {
+                    file.WriteLine(Convert.ToString(score - 1));
+                }
+                ScorePlayer1.Text = Convert.ToString(score - 1);
+            }
+        }
+        private void UpScorePlayer2()
+        {
+            int score = Convert.ToInt32(ScorePlayer2.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+            {
+                file.WriteLine(Convert.ToString(score + 1));
+            }
+            ScorePlayer2.Text = Convert.ToString(score + 1);
+        }
+        private void DownScorePlayer2()
+        {
+            int score = Convert.ToInt32(ScorePlayer2.Text);
+            if (score > 0)
+            {
+                //Write Score
+                using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                {
+                    file.WriteLine(Convert.ToString(score - 1));
+                }
+                ScorePlayer2.Text = Convert.ToString(score - 1);
+            }
+        }
+
+        private void ResetScorePlayer1()
+        {
+            int score = Convert.ToInt32(ScorePlayer1.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+            {
+                file.WriteLine(Convert.ToString(0));
+            }
+            ScorePlayer1.Text = Convert.ToString(0);
+        }
+
+        private void ResetScorePlayer2()
+        {
+            int score = Convert.ToInt32(ScorePlayer2.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+            {
+                file.WriteLine(Convert.ToString(0));
+            }
+            ScorePlayer2.Text = Convert.ToString(0);
+        }
+
+
+        /*
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             //up keys
@@ -136,6 +248,7 @@ namespace Scoreboards7r
                 ResetScorePlayer2_Button_Click(sender, e);
             }
         }
+        */
         //---------------------End Hotkeys Configuration-------------------------------
         //_____________________________________________________________________________
 
@@ -413,21 +526,50 @@ namespace Scoreboards7r
         {
             ActiveControl = null;
         }
-        private void groupBox2_Click(object sender, System.EventArgs e)
-        {
-            ActiveControl = null;
-        }
-        private void groupBox3_Click(object sender, System.EventArgs e)
-        {
-            ActiveControl = null;
-        }
-        private void groupBox4_Click(object sender, System.EventArgs e)
-        {
-            ActiveControl = null;
-        }
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             ActiveControl = null;
+        }
+
+        //Button "?"
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+        }
+
+        //Delete hotkeys registered for score
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ghk1.Unregister();
+            ghk2.Unregister();
+            ghk3.Unregister();
+            ghk4.Unregister();
+            ghk5.Unregister();
+            ghk6.Unregister();
+        }
+
+        //Register hotkeys for scores
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ghk1 = new Hotkeys(Constants.ALT, Keys.D1, this);
+            ghk1.Register();
+
+            ghk2 = new Hotkeys(Constants.ALT, Keys.D2, this);
+            ghk2.Register();
+
+            ghk3 = new Hotkeys(Constants.ALT, Keys.Q, this);
+            ghk3.Register();
+
+            ghk4 = new Hotkeys(Constants.ALT, Keys.W, this);
+            ghk4.Register();
+
+            ghk5 = new Hotkeys(Constants.ALT, Keys.A, this);
+            ghk5.Register();
+
+            ghk6 = new Hotkeys(Constants.ALT, Keys.S, this);
+            ghk6.Register();
         }
     }
 }
