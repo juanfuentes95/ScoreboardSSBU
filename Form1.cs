@@ -140,7 +140,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
             {
-                file.WriteLine(Convert.ToString(score + 1));
+                file.Write(Convert.ToString(score + 1));
             }
             ScorePlayer1.Text = Convert.ToString(score + 1);
         }
@@ -153,7 +153,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
                 {
-                    file.WriteLine(Convert.ToString(score - 1));
+                    file.Write(Convert.ToString(score - 1));
                 }
                 ScorePlayer1.Text = Convert.ToString(score - 1);
             }
@@ -165,7 +165,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
             {
-                file.WriteLine(Convert.ToString(score + 1));
+                file.Write(Convert.ToString(score + 1));
             }
             ScorePlayer2.Text = Convert.ToString(score + 1);
         }
@@ -178,7 +178,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
                 {
-                    file.WriteLine(Convert.ToString(score - 1));
+                    file.Write(Convert.ToString(score - 1));
                 }
                 ScorePlayer2.Text = Convert.ToString(score - 1);
             }
@@ -191,7 +191,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
             {
-                file.WriteLine(Convert.ToString(0));
+                file.Write(Convert.ToString(0));
             }
             ScorePlayer1.Text = Convert.ToString(0);
         }
@@ -203,7 +203,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
             {
-                file.WriteLine(Convert.ToString(0));
+                file.Write(Convert.ToString(0));
             }
             ScorePlayer2.Text = Convert.ToString(0);
         }
@@ -268,7 +268,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
             {
-                file.WriteLine(Convert.ToString(score + 1));
+                file.Write(Convert.ToString(score + 1));
             }
 
             ScorePlayer2.Text = Convert.ToString(score + 1);
@@ -282,7 +282,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
                 {
-                    file.WriteLine(Convert.ToString(score - 1));
+                    file.Write(Convert.ToString(score - 1));
                 }
 
                 ScorePlayer2.Text = Convert.ToString(score - 1);
@@ -296,7 +296,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
             {
-                file.WriteLine(Convert.ToString(score + 1));
+                file.Write(Convert.ToString(score + 1));
             }
 
             ScorePlayer1.Text = Convert.ToString(score + 1);
@@ -310,7 +310,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
                 {
-                    file.WriteLine(Convert.ToString(score - 1));
+                    file.Write(Convert.ToString(score - 1));
                 }
 
                 ScorePlayer1.Text = Convert.ToString(score - 1);
@@ -324,7 +324,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
             {
-                file.WriteLine(Convert.ToString(0));
+                file.Write(Convert.ToString(0));
             }
 
             ScorePlayer2.Text = Convert.ToString(0);
@@ -337,7 +337,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
             {
-                file.WriteLine(Convert.ToString(0));
+                file.Write(Convert.ToString(0));
             }
 
             ScorePlayer1.Text = Convert.ToString(0);
@@ -362,7 +362,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
                 {
-                    file.WriteLine(PlayerName1.Text);
+                    file.Write(PlayerName1.Text);
                 }
             }
         }
@@ -376,7 +376,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
                 {
-                    file.WriteLine(PlayerName2.Text);
+                    file.Write(PlayerName2.Text);
                 }
             }
         }
@@ -388,7 +388,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
             {
-                file.WriteLine(PlayerName1.Text);
+                file.Write(PlayerName1.Text);
             }
         }
         private void PlayerName2_Leave(object sender, EventArgs e)
@@ -399,7 +399,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
             {
-                file.WriteLine(PlayerName2.Text);
+                file.Write(PlayerName2.Text);
             }
         }
         //------------------------- End Add Player names to txt for OBS -------------------
@@ -419,7 +419,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
                 {
-                    file.WriteLine(PlayerTeam1.Text);
+                    file.Write(PlayerTeam1.Text);
                 }
             }
         }
@@ -433,7 +433,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
                 {
-                    file.WriteLine(PlayerTeam2.Text);
+                    file.Write(PlayerTeam2.Text);
                 }
             }
         }
@@ -445,7 +445,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
             {
-                file.WriteLine(PlayerTeam1.Text);
+                file.Write(PlayerTeam1.Text);
             }
         }
         private void PlayerTeam2_Leave(object sender, EventArgs e)
@@ -456,7 +456,7 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
             {
-                file.WriteLine(PlayerTeam2.Text);
+                file.Write(PlayerTeam2.Text);
             }
         }
         //------------------------- End Add Players Team to txt for OBS -------------------
@@ -475,7 +475,7 @@ namespace Scoreboards7r
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\descripcionTorneo.txt"))
                 {
-                    file.WriteLine(descripcionTorneo.Text);
+                    file.Write(descripcionTorneo.Text);
                 }
             }
         }
@@ -508,7 +508,7 @@ namespace Scoreboards7r
                 // Create a file to write to.
                 using (StreamWriter file = File.CreateText(@filePath))
                 {
-                    file.WriteLine(initValue);
+                    file.Write(initValue);
                 }
             }
             else
@@ -517,7 +517,7 @@ namespace Scoreboards7r
                 using (StreamWriter file =
                     new StreamWriter(@filePath))
                 {
-                    file.WriteLine(initValue);
+                    file.Write(initValue);
                 }
             }
         }
@@ -596,34 +596,34 @@ namespace Scoreboards7r
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
             {
-                file.WriteLine(strPlayerName2);
+                file.Write(strPlayerName2);
             }
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
             {
-                file.WriteLine(strPlayerName1);
+                file.Write(strPlayerName1);
             }
 
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
             {
-                file.WriteLine(strScorePlayer2);
+                file.Write(strScorePlayer2);
             }
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
             {
-                file.WriteLine(strScorePlayer1);
+                file.Write(strScorePlayer1);
             }
 
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
             {
-                file.WriteLine(strPlayerTeam2);
+                file.Write(strPlayerTeam2);
             }
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
             {
-                file.WriteLine(strPlayerTeam1);
+                file.Write(strPlayerTeam1);
             }
 
         }
