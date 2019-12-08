@@ -489,7 +489,7 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(160, 17);
             this.label26.TabIndex = 0;
-            this.label26.Text = "Software Marcador V1.2";
+            this.label26.Text = "Software Marcador V1.3";
             // 
             // Form2
             // 
