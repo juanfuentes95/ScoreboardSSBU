@@ -105,6 +105,10 @@ namespace Scoreboards7r
                 CreateTextFile(@filePath, "");
             }
 
+            
+            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png",true);
+            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png",true);
+
 
         }
    
@@ -144,7 +148,7 @@ namespace Scoreboards7r
             //Collection players name for textbox PlayerName1 and PlayerName2
             AutoCompleteStringCollection playersAutocomplete = new AutoCompleteStringCollection();
 
-            //Read Player Database from "/Resources/PlayersDatabase.txt"
+            //Read Player Database from " / Resources/PlayersDatabase.txt"
             string[] lines = System.IO.File.ReadAllLines(@"Resources\PlayersDatabase.txt");
             foreach (string line in lines)
             {
@@ -576,9 +580,11 @@ namespace Scoreboards7r
                     var directory = System.IO.Path.GetDirectoryName(path);
 
                     string filepath = @directory + @"\Icons\" + name + ".png";
+
                     file.Write(@filepath);
                     try
                     {
+                        File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
                         pictureBox1.Image = Image.FromFile(@filepath);
                         pictureBox1.Refresh();
                     }
@@ -614,6 +620,7 @@ namespace Scoreboards7r
                     file.Write(@filepath);
                     try
                     {
+                        File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
                         pictureBox2.Image = Image.FromFile(@filepath);
                         pictureBox2.Refresh();
                     }
@@ -645,6 +652,7 @@ namespace Scoreboards7r
                 file.Write(@filepath);
                 try
                 {
+                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
                     pictureBox1.Image = Image.FromFile(@filepath);
                     pictureBox1.Refresh();
                 }
@@ -675,6 +683,7 @@ namespace Scoreboards7r
                 file.Write(@filepath);
                 try
                 {
+                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
                     pictureBox2.Image = Image.FromFile(@filepath);
                     pictureBox2.Refresh();
                 }
@@ -864,9 +873,11 @@ namespace Scoreboards7r
 
             try
             {
-                pictureBox1.Image = Image.FromFile(strCharacterName2);
+                File.Copy(@strCharacterName2, @"Resources\PlayerIcon1.png", true);
+                File.Copy(@strCharacterName1, @"Resources\PlayerIcon2.png", true);
+                pictureBox1.Image = Image.FromFile(@strCharacterName2);
                 pictureBox1.Refresh();
-                pictureBox2.Image = Image.FromFile(strCharacterName1);
+                pictureBox2.Image = Image.FromFile(@strCharacterName1);
                 pictureBox2.Refresh();
             }
             catch (Exception ex)
@@ -933,6 +944,8 @@ namespace Scoreboards7r
 
             try
             {
+                File.Copy(@strCharacterName2, @"Resources\PlayerIcon1.png", true);
+                File.Copy(@strCharacterName1, @"Resources\PlayerIcon2.png", true);
                 pictureBox1.Image = Image.FromFile(strCharacterName2);
                 pictureBox1.Refresh();
                 pictureBox2.Image = Image.FromFile(strCharacterName1);
