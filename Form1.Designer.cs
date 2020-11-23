@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.BracketComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +58,16 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.PlayerTeam1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CharacterName1 = new System.Windows.Forms.ComboBox();
+            this.CharacterName2 = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // BracketComboBox
@@ -98,16 +106,17 @@
             // 
             // PlayerName1
             // 
-            this.PlayerName1.Location = new System.Drawing.Point(44, 94);
+            this.PlayerName1.Location = new System.Drawing.Point(11, 78);
             this.PlayerName1.Name = "PlayerName1";
             this.PlayerName1.Size = new System.Drawing.Size(100, 20);
             this.PlayerName1.TabIndex = 2;
+            this.PlayerName1.TextChanged += new System.EventHandler(this.PlayerName1_TextChanged);
             this.PlayerName1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerName1_KeyDown);
             this.PlayerName1.Leave += new System.EventHandler(this.PlayerName1_Leave);
             // 
             // PlayerName2
             // 
-            this.PlayerName2.Location = new System.Drawing.Point(292, 94);
+            this.PlayerName2.Location = new System.Drawing.Point(232, 78);
             this.PlayerName2.Name = "PlayerName2";
             this.PlayerName2.Size = new System.Drawing.Size(100, 20);
             this.PlayerName2.TabIndex = 4;
@@ -116,7 +125,7 @@
             // 
             // UpScorePlayer1_Button
             // 
-            this.UpScorePlayer1_Button.Location = new System.Drawing.Point(161, 68);
+            this.UpScorePlayer1_Button.Location = new System.Drawing.Point(131, 68);
             this.UpScorePlayer1_Button.Name = "UpScorePlayer1_Button";
             this.UpScorePlayer1_Button.Size = new System.Drawing.Size(27, 23);
             this.UpScorePlayer1_Button.TabIndex = 6;
@@ -127,7 +136,7 @@
             // 
             // DownScorePlayer1_Button
             // 
-            this.DownScorePlayer1_Button.Location = new System.Drawing.Point(161, 120);
+            this.DownScorePlayer1_Button.Location = new System.Drawing.Point(131, 120);
             this.DownScorePlayer1_Button.Name = "DownScorePlayer1_Button";
             this.DownScorePlayer1_Button.Size = new System.Drawing.Size(27, 23);
             this.DownScorePlayer1_Button.TabIndex = 2;
@@ -138,7 +147,7 @@
             // 
             // UpScorePlayer2_Button
             // 
-            this.UpScorePlayer2_Button.Location = new System.Drawing.Point(211, 68);
+            this.UpScorePlayer2_Button.Location = new System.Drawing.Point(181, 68);
             this.UpScorePlayer2_Button.Name = "UpScorePlayer2_Button";
             this.UpScorePlayer2_Button.Size = new System.Drawing.Size(27, 23);
             this.UpScorePlayer2_Button.TabIndex = 8;
@@ -149,7 +158,7 @@
             // 
             // DownScorePlayer2_Button
             // 
-            this.DownScorePlayer2_Button.Location = new System.Drawing.Point(211, 120);
+            this.DownScorePlayer2_Button.Location = new System.Drawing.Point(181, 120);
             this.DownScorePlayer2_Button.Name = "DownScorePlayer2_Button";
             this.DownScorePlayer2_Button.Size = new System.Drawing.Size(27, 23);
             this.DownScorePlayer2_Button.TabIndex = 3;
@@ -162,7 +171,7 @@
             // 
             this.ScorePlayer1.AutoSize = true;
             this.ScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScorePlayer1.Location = new System.Drawing.Point(161, 90);
+            this.ScorePlayer1.Location = new System.Drawing.Point(131, 90);
             this.ScorePlayer1.Name = "ScorePlayer1";
             this.ScorePlayer1.Size = new System.Drawing.Size(29, 31);
             this.ScorePlayer1.TabIndex = 10;
@@ -172,7 +181,7 @@
             // 
             this.ScorePlayer2.AutoSize = true;
             this.ScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScorePlayer2.Location = new System.Drawing.Point(210, 90);
+            this.ScorePlayer2.Location = new System.Drawing.Point(180, 90);
             this.ScorePlayer2.Name = "ScorePlayer2";
             this.ScorePlayer2.Size = new System.Drawing.Size(29, 31);
             this.ScorePlayer2.TabIndex = 11;
@@ -194,18 +203,18 @@
             // 
             // descripcionTorneo
             // 
-            this.descripcionTorneo.Location = new System.Drawing.Point(148, 33);
+            this.descripcionTorneo.Location = new System.Drawing.Point(119, 33);
             this.descripcionTorneo.Name = "descripcionTorneo";
             this.descripcionTorneo.Size = new System.Drawing.Size(100, 20);
             this.descripcionTorneo.TabIndex = 13;
             this.descripcionTorneo.TabStop = false;
-            this.descripcionTorneo.Text = "Juntas Semanales";
+            this.descripcionTorneo.Text = "Torneo";
             this.descripcionTorneo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descripcionTorneo_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(148, 17);
+            this.label5.Location = new System.Drawing.Point(119, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 13);
             this.label5.TabIndex = 14;
@@ -264,7 +273,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 78);
+            this.label8.Location = new System.Drawing.Point(14, 62);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 4;
@@ -273,7 +282,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(295, 78);
+            this.label9.Location = new System.Drawing.Point(235, 62);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 13);
             this.label9.TabIndex = 21;
@@ -281,9 +290,9 @@
             // 
             // ResetScorePlayer1_Button
             // 
-            this.ResetScorePlayer1_Button.Location = new System.Drawing.Point(161, 149);
+            this.ResetScorePlayer1_Button.Location = new System.Drawing.Point(137, 149);
             this.ResetScorePlayer1_Button.Name = "ResetScorePlayer1_Button";
-            this.ResetScorePlayer1_Button.Size = new System.Drawing.Size(27, 23);
+            this.ResetScorePlayer1_Button.Size = new System.Drawing.Size(16, 20);
             this.ResetScorePlayer1_Button.TabIndex = 22;
             this.ResetScorePlayer1_Button.TabStop = false;
             this.ResetScorePlayer1_Button.Text = "R";
@@ -292,9 +301,9 @@
             // 
             // ResetScorePlayer2_Button
             // 
-            this.ResetScorePlayer2_Button.Location = new System.Drawing.Point(211, 149);
+            this.ResetScorePlayer2_Button.Location = new System.Drawing.Point(186, 149);
             this.ResetScorePlayer2_Button.Name = "ResetScorePlayer2_Button";
-            this.ResetScorePlayer2_Button.Size = new System.Drawing.Size(27, 23);
+            this.ResetScorePlayer2_Button.Size = new System.Drawing.Size(15, 19);
             this.ResetScorePlayer2_Button.TabIndex = 23;
             this.ResetScorePlayer2_Button.TabStop = false;
             this.ResetScorePlayer2_Button.Text = "R";
@@ -303,6 +312,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.CharacterName2);
+            this.groupBox1.Controls.Add(this.CharacterName1);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.PlayerTeam2);
@@ -325,26 +341,26 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(5, -2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(398, 206);
+            this.groupBox1.Size = new System.Drawing.Size(349, 225);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(161, 177);
+            this.button2.Location = new System.Drawing.Point(103, 177);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(77, 23);
+            this.button2.Size = new System.Drawing.Size(136, 23);
             this.button2.TabIndex = 29;
             this.button2.TabStop = false;
-            this.button2.Text = "Cambiar";
+            this.button2.Text = "Cambiar PJ + Score";
             this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(375, 177);
+            this.button1.Location = new System.Drawing.Point(326, 202);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(19, 23);
             this.button1.TabIndex = 28;
@@ -355,45 +371,117 @@
             // 
             // PlayerTeam2
             // 
-            this.PlayerTeam2.Location = new System.Drawing.Point(255, 94);
+            this.PlayerTeam2.Location = new System.Drawing.Point(232, 33);
             this.PlayerTeam2.Name = "PlayerTeam2";
-            this.PlayerTeam2.Size = new System.Drawing.Size(31, 20);
+            this.PlayerTeam2.Size = new System.Drawing.Size(97, 20);
             this.PlayerTeam2.TabIndex = 3;
+            this.PlayerTeam2.TabStop = false;
             this.PlayerTeam2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerTeam2_KeyDown);
             this.PlayerTeam2.Leave += new System.EventHandler(this.PlayerTeam2_Leave);
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(254, 78);
+            this.label30.Location = new System.Drawing.Point(229, 17);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(34, 13);
+            this.label30.Size = new System.Drawing.Size(105, 13);
             this.label30.TabIndex = 26;
-            this.label30.Text = "Team";
+            this.label30.Text = "Team 2 (Para crews)";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 78);
+            this.label29.Location = new System.Drawing.Point(8, 17);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(34, 13);
+            this.label29.Size = new System.Drawing.Size(105, 13);
             this.label29.TabIndex = 25;
-            this.label29.Text = "Team";
+            this.label29.Text = "Team 1 (Para crews)";
             // 
             // PlayerTeam1
             // 
-            this.PlayerTeam1.Location = new System.Drawing.Point(7, 94);
+            this.PlayerTeam1.Location = new System.Drawing.Point(11, 33);
             this.PlayerTeam1.Name = "PlayerTeam1";
-            this.PlayerTeam1.Size = new System.Drawing.Size(31, 20);
+            this.PlayerTeam1.Size = new System.Drawing.Size(97, 20);
             this.PlayerTeam1.TabIndex = 1;
+            this.PlayerTeam1.TabStop = false;
             this.PlayerTeam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerTeam1_KeyDown);
             this.PlayerTeam1.Leave += new System.EventHandler(this.PlayerTeam1_Leave);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(103, 202);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(136, 23);
+            this.button3.TabIndex = 30;
+            this.button3.TabStop = false;
+            this.button3.Text = "Cambiar Solo Jugadores";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 157);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // CharacterName1
+            // 
+            this.CharacterName1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CharacterName1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.CharacterName1.FormattingEnabled = true;
+            this.CharacterName1.Location = new System.Drawing.Point(11, 122);
+            this.CharacterName1.Name = "CharacterName1";
+            this.CharacterName1.Size = new System.Drawing.Size(100, 21);
+            this.CharacterName1.TabIndex = 33;
+            this.CharacterName1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CharacterName1_KeyDown);
+            this.CharacterName1.Leave += new System.EventHandler(this.CharacterName1_Leave);
+            // 
+            // CharacterName2
+            // 
+            this.CharacterName2.FormattingEnabled = true;
+            this.CharacterName2.Location = new System.Drawing.Point(232, 122);
+            this.CharacterName2.Name = "CharacterName2";
+            this.CharacterName2.Size = new System.Drawing.Size(100, 21);
+            this.CharacterName2.TabIndex = 34;
+            this.CharacterName2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CharacterName2_KeyDown);
+            this.CharacterName2.Leave += new System.EventHandler(this.CharacterName2_Leave);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(258, 157);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 105);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Ícono Jugador 1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(240, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Ícono Jugador 2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 207);
+            this.ClientSize = new System.Drawing.Size(360, 227);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -405,16 +493,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BracketComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Scoreboard S7R v1.3";
+            this.Text = "Scoreboard v1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,6 +541,13 @@
         private System.Windows.Forms.TextBox PlayerTeam1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox CharacterName1;
+        private System.Windows.Forms.ComboBox CharacterName2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
 

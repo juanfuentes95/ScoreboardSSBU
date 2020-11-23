@@ -64,8 +64,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -83,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -103,9 +100,9 @@
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Location = new System.Drawing.Point(242, 77);
+            this.groupBox3.Location = new System.Drawing.Point(242, 67);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 133);
+            this.groupBox3.Size = new System.Drawing.Size(232, 104);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información Jugador 2";
@@ -118,6 +115,7 @@
             this.label23.Size = new System.Drawing.Size(116, 13);
             this.label23.TabIndex = 9;
             this.label23.Text = "Reset Score Jugador 2";
+            this.label23.Visible = false;
             // 
             // pictureBox7
             // 
@@ -128,11 +126,12 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 16;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Visible = false;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(111, 31);
+            this.label25.Location = new System.Drawing.Point(111, 34);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(108, 13);
             this.label25.TabIndex = 7;
@@ -141,7 +140,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(60, 56);
+            this.pictureBox8.Location = new System.Drawing.Point(60, 59);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(30, 29);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +150,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(112, 65);
+            this.label24.Location = new System.Drawing.Point(112, 68);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(106, 13);
             this.label24.TabIndex = 8;
@@ -166,11 +165,12 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Visible = false;
             // 
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(60, 22);
+            this.pictureBox10.Location = new System.Drawing.Point(60, 25);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(30, 29);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -180,7 +180,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(14, 55);
+            this.pictureBox11.Location = new System.Drawing.Point(14, 58);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(30, 29);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -190,7 +190,7 @@
             // pictureBox12
             // 
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(14, 21);
+            this.pictureBox12.Location = new System.Drawing.Point(14, 24);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(30, 29);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -201,7 +201,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(92, 27);
+            this.label18.Location = new System.Drawing.Point(92, 30);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(23, 17);
             this.label18.TabIndex = 12;
@@ -216,12 +216,13 @@
             this.label15.Size = new System.Drawing.Size(23, 17);
             this.label15.TabIndex = 10;
             this.label15.Text = "→";
+            this.label15.Visible = false;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(92, 61);
+            this.label16.Location = new System.Drawing.Point(92, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(23, 17);
             this.label16.TabIndex = 11;
@@ -231,7 +232,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(41, 25);
+            this.label22.Location = new System.Drawing.Point(41, 28);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(24, 25);
             this.label22.TabIndex = 15;
@@ -241,7 +242,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(41, 58);
+            this.label21.Location = new System.Drawing.Point(41, 61);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(24, 25);
             this.label21.TabIndex = 14;
@@ -256,6 +257,7 @@
             this.label19.Size = new System.Drawing.Size(24, 25);
             this.label19.TabIndex = 13;
             this.label19.Text = "+";
+            this.label19.Visible = false;
             // 
             // groupBox2
             // 
@@ -274,9 +276,9 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(4, 77);
+            this.groupBox2.Location = new System.Drawing.Point(4, 67);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(232, 133);
+            this.groupBox2.Size = new System.Drawing.Size(232, 104);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información Jugador 1";
@@ -320,6 +322,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 6;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Visible = false;
             // 
             // pictureBox3
             // 
@@ -330,6 +333,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox4
             // 
@@ -360,6 +364,7 @@
             this.label14.Size = new System.Drawing.Size(23, 17);
             this.label14.TabIndex = 4;
             this.label14.Text = "→";
+            this.label14.Visible = false;
             // 
             // label13
             // 
@@ -390,6 +395,7 @@
             this.label12.Size = new System.Drawing.Size(24, 25);
             this.label12.TabIndex = 4;
             this.label12.Text = "+";
+            this.label12.Visible = false;
             // 
             // label17
             // 
@@ -409,6 +415,7 @@
             this.label10.Size = new System.Drawing.Size(116, 13);
             this.label10.TabIndex = 2;
             this.label10.Text = "Reset Score Jugador 1";
+            this.label10.Visible = false;
             // 
             // label4
             // 
@@ -432,19 +439,17 @@
             // 
             this.groupBox4.Controls.Add(this.pictureBox14);
             this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Controls.Add(this.label27);
-            this.groupBox4.Controls.Add(this.pictureBox13);
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Location = new System.Drawing.Point(4, -3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(470, 77);
+            this.groupBox4.Size = new System.Drawing.Size(470, 63);
             this.groupBox4.TabIndex = 29;
             this.groupBox4.TabStop = false;
             // 
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(310, 15);
+            this.pictureBox14.Location = new System.Drawing.Point(285, 10);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(126, 50);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -455,31 +460,11 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(10, 56);
+            this.label28.Location = new System.Drawing.Point(10, 39);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(109, 9);
             this.label28.TabIndex = 2;
             this.label28.Text = "Desarrollado por Juan Fuentes";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(9, 35);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(159, 13);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "Marcador para Smash 7° Región";
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(211, 15);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox13.TabIndex = 1;
-            this.pictureBox13.TabStop = false;
             // 
             // label26
             // 
@@ -489,13 +474,13 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(160, 17);
             this.label26.TabIndex = 0;
-            this.label26.Text = "Software Marcador V1.3";
+            this.label26.Text = "Software Marcador V1.4";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 213);
+            this.ClientSize = new System.Drawing.Size(483, 182);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -522,7 +507,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -564,8 +548,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.Label label26;
     }
 }
