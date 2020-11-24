@@ -1,0 +1,9 @@
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\bin\Release\scoreboard_ssbu.exe.config
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\bin\Release\scoreboard_ssbu.exe
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csprojAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Form1.resources
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Form2.resources
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Properties.Resources.resources
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.GenerateResource.cache
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.CoreCompileInputs.cache
+C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\scoreboard_ssbu.exe

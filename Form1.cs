@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Scoreboards7r
+namespace ScoreboardSSBU
 {
     public partial class Form1 : Form
     {
@@ -66,6 +66,10 @@ namespace Scoreboards7r
         void InitializeNamesAndScoresAndDescription()
         {
             System.IO.Directory.CreateDirectory("Resources");
+
+            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
+            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+
             string filePath = "";
             filePath = @"Resources\PlayerName1.txt";
             CreateTextFile(@filePath, "");
@@ -83,7 +87,7 @@ namespace Scoreboards7r
             string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = System.IO.Path.GetDirectoryName(path);
 
-            string pathImage = @directory + @"\Icons\banjo_and_kazooie.png";
+            string pathImage = @directory + @"Resources\ImageEmpty.png";
 
             filePath = @"Resources\CharacterName1.txt";
             CreateTextFile(@filePath, @pathImage);
@@ -106,8 +110,7 @@ namespace Scoreboards7r
             }
 
             
-            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png",true);
-            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png",true);
+            
 
 
         }
@@ -557,7 +560,7 @@ namespace Scoreboards7r
 
 
 
-        //_________________________________________________________________________________
+        //_______________________________________________________________________________
         //------------------------- Add characters to txt for OBS -----------------------
         private void CharacterName1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -565,12 +568,12 @@ namespace Scoreboards7r
             if (e.KeyCode == Keys.Enter)
             {
                 string name = CharacterName1.Text.ToLower();
-
-
+               
                 name = name.Replace(".", "");
                 name = name.Replace(" ", "_");
                 name = name.Replace("-", "_");
                 name = name.Replace("\n", "").Replace("\r", "");
+                
 
                 //Write CharacterName1
                 using (System.IO.StreamWriter file =
@@ -582,16 +585,34 @@ namespace Scoreboards7r
                     string filepath = @directory + @"\Icons\" + name + ".png";
 
                     file.Write(@filepath);
-                    try
+
+                    if (!File.Exists(@filepath))
                     {
-                        File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                        pictureBox1.Image = Image.FromFile(@filepath);
-                        pictureBox1.Refresh();
+                        try
+                        {
+                            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
+                            pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                            pictureBox1.Refresh();
+                            Console.WriteLine("No image found");
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon1.png");
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("Image not found");
-                    }           
+                        try
+                        {
+                            File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
+                            pictureBox1.Image = Image.FromFile(@filepath);
+                            pictureBox1.Refresh();
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon1.png");
+                        }
+                    }
 
                 }
             }
@@ -618,16 +639,35 @@ namespace Scoreboards7r
 
                     string filepath = @directory + @"\Icons\" + name + ".png";
                     file.Write(@filepath);
-                    try
+
+                    if (!File.Exists(@filepath))
                     {
-                        File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                        pictureBox2.Image = Image.FromFile(@filepath);
-                        pictureBox2.Refresh();
+                        try
+                        {
+                            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+                            pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                            pictureBox2.Refresh();
+                            Console.WriteLine("No image found");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon2.png");
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("Image not found");
+                        try
+                        {
+                            File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
+                            pictureBox2.Image = Image.FromFile(@filepath);
+                            pictureBox2.Refresh();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon2.png");
+                        }
                     }
+
                 }
             }
         }
@@ -650,15 +690,32 @@ namespace Scoreboards7r
 
                 string filepath = @directory + @"\Icons\" + name + ".png";
                 file.Write(@filepath);
-                try
+                if (!File.Exists(@filepath))
                 {
-                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                    pictureBox1.Image = Image.FromFile(@filepath);
-                    pictureBox1.Refresh();
+                    try
+                    {
+                        File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
+                        pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                        pictureBox1.Refresh();
+                        Console.WriteLine("No image found");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon1.png");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("Image not found");
+                    try
+                    {
+                        File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
+                        pictureBox1.Image = Image.FromFile(@filepath);
+                        pictureBox1.Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon1.png");
+                    }
                 }
             }
         }
@@ -681,15 +738,32 @@ namespace Scoreboards7r
 
                 string filepath = @directory + @"\Icons\" + name + ".png";
                 file.Write(@filepath);
-                try
+                if (!File.Exists(@filepath))
                 {
-                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                    pictureBox2.Image = Image.FromFile(@filepath);
-                    pictureBox2.Refresh();
+                    try
+                    {
+                        File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+                        pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                        pictureBox2.Refresh();
+                        Console.WriteLine("No image found");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon2.png");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("Image not found");
+                    try
+                    {
+                        File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
+                        pictureBox2.Image = Image.FromFile(@filepath);
+                        pictureBox2.Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon2.png");
+                    }
                 }
             }
         }
@@ -871,20 +945,66 @@ namespace Scoreboards7r
                 file.Write(strCharacterName1);                
             }
 
-            try
+            //PlayerIcon1 to PlayerIcon2          
+            string filepath = strCharacterName1;
+            if (!File.Exists(@filepath))
             {
-                File.Copy(@strCharacterName2, @"Resources\PlayerIcon1.png", true);
-                File.Copy(@strCharacterName1, @"Resources\PlayerIcon2.png", true);
-                pictureBox1.Image = Image.FromFile(@strCharacterName2);
-                pictureBox1.Refresh();
-                pictureBox2.Image = Image.FromFile(@strCharacterName1);
-                pictureBox2.Refresh();
+                try
+                {
+                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+                    pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                    pictureBox2.Refresh();
+                    Console.WriteLine("No image found");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Image not found");
+                try
+                {
+                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
+                    pictureBox2.Image = Image.FromFile(@filepath);
+                    pictureBox2.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
+                }
             }
 
+
+            //PlayerIcon2 to PlayerIcon1
+            filepath = strCharacterName2;
+            if (!File.Exists(@filepath))
+            {
+                try
+                {
+                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
+                    pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                    pictureBox1.Refresh();
+                    Console.WriteLine("No image found");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
+                    pictureBox1.Image = Image.FromFile(@filepath);
+                    pictureBox1.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
+                }
+            }
 
 
             /*
@@ -942,18 +1062,66 @@ namespace Scoreboards7r
                 file.Write(strCharacterName1);
             }
 
-            try
+
+            //PlayerIcon1 to PlayerIcon2          
+            string filepath = strCharacterName1;
+            if (!File.Exists(@filepath))
             {
-                File.Copy(@strCharacterName2, @"Resources\PlayerIcon1.png", true);
-                File.Copy(@strCharacterName1, @"Resources\PlayerIcon2.png", true);
-                pictureBox1.Image = Image.FromFile(strCharacterName2);
-                pictureBox1.Refresh();
-                pictureBox2.Image = Image.FromFile(strCharacterName1);
-                pictureBox2.Refresh();
+                try
+                {
+                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+                    pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                    pictureBox2.Refresh();
+                    Console.WriteLine("No image found");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Image not found");
+                try
+                {
+                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
+                    pictureBox2.Image = Image.FromFile(@filepath);
+                    pictureBox2.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
+                }
+            }
+
+
+            //PlayerIcon2 to PlayerIcon1
+            filepath = strCharacterName2;
+            if (!File.Exists(@filepath))
+            {
+                try
+                {
+                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
+                    pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
+                    pictureBox1.Refresh();
+                    Console.WriteLine("No image found");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
+                    pictureBox1.Image = Image.FromFile(@filepath);
+                    pictureBox1.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
+                }
             }
 
         }

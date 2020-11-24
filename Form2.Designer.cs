@@ -1,4 +1,4 @@
-﻿namespace Scoreboards7r
+﻿namespace ScoreboardSSBU
 {
     partial class Form2
     {
@@ -474,7 +474,7 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(160, 17);
             this.label26.TabIndex = 0;
-            this.label26.Text = "Software Marcador V1.4";
+            this.label26.Text = "Software Marcador V1.6";
             // 
             // Form2
             // 
@@ -485,6 +485,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form2";
             this.Text = "Información";
