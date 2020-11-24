@@ -453,7 +453,7 @@ namespace ScoreboardSSBU
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
+                //PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
                 //Write playername1
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
@@ -467,7 +467,7 @@ namespace ScoreboardSSBU
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
+                //PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
                 //Write playername2
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
@@ -479,7 +479,7 @@ namespace ScoreboardSSBU
         private void PlayerName1_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
-            PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
+            //PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
             //Write playername1
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
@@ -490,7 +490,7 @@ namespace ScoreboardSSBU
         private void PlayerName2_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
-            PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
+            //PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
             //Write playername2
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
@@ -510,7 +510,7 @@ namespace ScoreboardSSBU
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
+                //PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
                 //Write PlayerTeam1
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
@@ -524,7 +524,7 @@ namespace ScoreboardSSBU
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
+                //PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
                 //Write PlayerTeam2
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
@@ -536,7 +536,7 @@ namespace ScoreboardSSBU
         private void PlayerTeam1_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
-            PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
+            //PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
             //Write PlayerTeam1
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
@@ -547,7 +547,7 @@ namespace ScoreboardSSBU
         private void PlayerTeam2_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
-            PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
+            //PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
             //Write PlayerTeam2
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
@@ -778,13 +778,23 @@ namespace ScoreboardSSBU
         {
             if (e.KeyCode == Keys.Enter)
             {
-                descripcionTorneo.Text = FirstLetterToUpper(descripcionTorneo.Text);
+                //descripcionTorneo.Text = FirstLetterToUpper(descripcionTorneo.Text);
                 //Write descripcionTorneo
                 using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(@"Resources\descripcionTorneo.txt"))
                 {
                     file.Write(descripcionTorneo.Text);
                 }
+            }
+        }
+
+        private void descripcionTorneo_Leave(object sender, EventArgs e)
+        {
+            //Leave textbox to activate
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter(@"Resources\descripcionTorneo.txt"))
+            {
+                file.Write(descripcionTorneo.Text);
             }
         }
         //------------------------- End Add Description Tourney to txt for OBS ------------

@@ -211,6 +211,7 @@
             this.descripcionTorneo.TabStop = false;
             this.descripcionTorneo.Text = "Torneo";
             this.descripcionTorneo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descripcionTorneo_KeyDown);
+            this.descripcionTorneo.Leave += new System.EventHandler(this.descripcionTorneo_Leave);
             // 
             // label5
             // 
