@@ -87,7 +87,7 @@ namespace ScoreboardSSBU
             string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = System.IO.Path.GetDirectoryName(path);
 
-            string pathImage = @directory + @"Resources\ImageEmpty.png";
+            string pathImage = @directory + @"\Resources\ImageEmpty.png";
 
             filePath = @"Resources\CharacterName1.txt";
             CreateTextFile(@filePath, @pathImage);
