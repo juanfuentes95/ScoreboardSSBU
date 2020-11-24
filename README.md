@@ -11,7 +11,7 @@ Smash Bros. Ultimate's Scoreboard for OBS Studio in C#.
 	- Player's Team (Crew Battles) (PlayerTeam1.txt and PlayerTeam2.txt)
 	- Player's Score (ScorePlayer1.txt and ScorePlayer2.txt)
 	- Tourney Description (descripcionTorneo.txt)
-	- Icon of PJ (PlayerIcon1.txt and PlayerIcon2.txt)
+	- Icon of PJ (PlayerIcon1.txt and PlayerIcon2.txt)(for update images, use studio mode, transition->).
 
 ## Contributing
 
