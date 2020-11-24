@@ -5,7 +5,7 @@ Smash Bros. Ultimate's Scoreboard for OBS Studio in C#.
 ## Usage
 
 1. Extract [Lastest Version](https://github.com/juanfuentes95/ScoreboardSSBU/releases/latest) on any location.
-1. Add player in "PlayersDatabase.txt" to autocomplete names.
+1. (Optional) Add player in "PlayersDatabase.txt" to autocomplete names.
 2. Link to OBS Studio:
 	- Player's Name (PlayerName1.txt and PlayerName2.txt)
 	- Player's Team (Crew Battles) (PlayerTeam1.txt and PlayerTeam2.txt)
