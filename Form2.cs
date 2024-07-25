@@ -16,5 +16,20 @@ namespace ScoreboardSSBU
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.reddit.com/r/smashbros/comments/f1iz5c/a_complete_hq_image_collection_of_all_smash/");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.spriters-resource.com/nintendo_switch/supersmashbrosultimate/");
+        }
     }
 }

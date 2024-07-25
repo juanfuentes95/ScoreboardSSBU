@@ -65,6 +65,9 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -102,10 +105,10 @@
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Location = new System.Drawing.Point(242, 67);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 104);
+            this.groupBox3.Size = new System.Drawing.Size(232, 103);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Información Jugador 2";
+            this.groupBox3.Text = "Controls Player 2";
             // 
             // label23
             // 
@@ -133,9 +136,9 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(111, 34);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(108, 13);
+            this.label25.Size = new System.Drawing.Size(94, 13);
             this.label25.TabIndex = 7;
-            this.label25.Text = "Suma +1 a Jugador 2";
+            this.label25.Text = "Add +1 to Player 2";
             // 
             // pictureBox8
             // 
@@ -152,9 +155,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(112, 68);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(106, 13);
+            this.label24.Size = new System.Drawing.Size(112, 13);
             this.label24.TabIndex = 8;
-            this.label24.Text = "Resta -1 a Jugador 2";
+            this.label24.Text = "Subtract -1 to Player 2";
             // 
             // pictureBox9
             // 
@@ -278,10 +281,10 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(4, 67);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(232, 104);
+            this.groupBox2.Size = new System.Drawing.Size(232, 103);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Información Jugador 1";
+            this.groupBox2.Text = "Controls Player 1";
             // 
             // pictureBox5
             // 
@@ -422,18 +425,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(112, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.Size = new System.Drawing.Size(112, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Resta -1 a Jugador 1";
+            this.label4.Text = "Subtract -1 to Player 1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(111, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 13);
+            this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Suma +1 a Jugador 1";
+            this.label3.Text = "Add +1 to Player 1";
             // 
             // groupBox4
             // 
@@ -449,7 +452,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(285, 10);
+            this.pictureBox14.Location = new System.Drawing.Point(298, 10);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(126, 50);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -459,12 +462,12 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(10, 39);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(109, 9);
+            this.label28.Size = new System.Drawing.Size(120, 12);
             this.label28.TabIndex = 2;
-            this.label28.Text = "Desarrollado por Juan Fuentes";
+            this.label28.Text = "Developed by Juan Fuentes";
             // 
             // label26
             // 
@@ -472,15 +475,50 @@
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(9, 15);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(160, 17);
+            this.label26.Size = new System.Drawing.Size(152, 17);
             this.label26.TabIndex = 0;
-            this.label26.Text = "Software Marcador V1.7";
+            this.label26.Text = "ScoreboardSSBU V1.8";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 177);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Image Resources:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(7, 194);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(198, 13);
+            this.linkLabel1.TabIndex = 33;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Portraits: TV_Toshi - Reddit r/smashbros";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(7, 211);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(146, 13);
+            this.linkLabel2.TabIndex = 34;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Icons: Spriters-Resource.com";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 182);
+            this.ClientSize = new System.Drawing.Size(481, 233);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -488,7 +526,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form2";
-            this.Text = "Información";
+            this.Text = "Information";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -509,6 +547,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -550,5 +589,8 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

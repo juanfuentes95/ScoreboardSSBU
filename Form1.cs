@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ScoreboardSSBU
 {
@@ -30,19 +26,19 @@ namespace ScoreboardSSBU
             InitializeComponent();
 
             //Player Name 1 textbox autocomplete
-            PlayerName1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            PlayerName1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            NamePlayer1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            NamePlayer1.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             //Player Name 2 textbox autocomplete
-            PlayerName2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            PlayerName2.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
-         
+            NamePlayer2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            NamePlayer2.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             //Character Name 2 textbox autocomplete
-            CharacterName2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            CharacterName2.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            CharacterPlayer2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            CharacterPlayer2.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            ColorPlayer1.SelectedIndex = 0;
+            ColorPlayer2.SelectedIndex = 0;
 
             //Create and initialize files (player names, score)
             InitializeNamesAndScoresAndDescription();
@@ -57,8 +53,8 @@ namespace ScoreboardSSBU
             //this.KeyDown += new KeyEventHandler(MainForm_KeyDown);
 
             //Combobox default
-            BracketComboBox.SelectedIndex = 0; //0 = Winner Bracket; 1 = Looser Bracket
-            RoundComboBox.SelectedIndex = 0; //0 = Round; 1 = Finals; 2 = Grand Finals
+            //BracketComboBox.SelectedIndex = 0; //0 = Winner Bracket; 1 = Looser Bracket
+            //RoundComboBox.SelectedIndex = 0; //0 = Round; 1 = Finals; 2 = Grand Finals
 
             this.groupBox1.Click += new System.EventHandler(this.groupBox1_Click);
 
@@ -67,52 +63,40 @@ namespace ScoreboardSSBU
         {
             System.IO.Directory.CreateDirectory("Resources");
 
-            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
-            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
+            File.Copy("Resources\\FixedData\\ImageEmptyIcon.png", "Resources\\IconPlayer1.png", true);
+            File.Copy("Resources\\FixedData\\ImageEmptyIcon.png", "Resources\\IconPlayer2.png", true);
+            File.Copy("Resources\\FixedData\\ImageEmptyPortrait.png", "Resources\\PortraitPlayer1.png", true);
+            File.Copy("Resources\\FixedData\\ImageEmptyPortrait.png", "Resources\\PortraitPlayer2.png", true);
 
             string filePath = "";
-            filePath = @"Resources\PlayerName1.txt";
+            filePath = "Resources\\NamePlayer1.txt";
             CreateTextFile(@filePath, "");
-            filePath = @"Resources\PlayerName2.txt";
+            filePath = "Resources\\NamePlayer2.txt";
             CreateTextFile(@filePath, "");
-            filePath = @"Resources\PlayerTeam1.txt";
+            filePath = "Resources\\TeamPlayer1.txt";
             CreateTextFile(@filePath, "");
-            filePath = @"Resources\PlayerTeam2.txt";
+            filePath = "Resources\\TeamPlayer2.txt";
             CreateTextFile(@filePath, "");
-            filePath = @"Resources\ScorePlayer1.txt";
+            filePath = "Resources\\ScorePlayer1.txt";
             CreateTextFile(@filePath, "0");
-            filePath = @"Resources\ScorePlayer2.txt";
+            filePath = "Resources\\ScorePlayer2.txt";
             CreateTextFile(@filePath, "0");
+            filePath = "Resources\\tournament_name.txt";
+            CreateTextFile(@filePath, TournamentName.Text);
+            filePath = "Resources\\tournament_information.txt";
+            CreateTextFile(@filePath, TournamentInformation.Text);
 
-            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var directory = System.IO.Path.GetDirectoryName(path);
-
-            string pathImage = @directory + @"\Resources\ImageEmpty.png";
-
-            filePath = @"Resources\CharacterName1.txt";
-            CreateTextFile(@filePath, @pathImage);
-            filePath = @"Resources\CharacterName2.txt";
-            CreateTextFile(@filePath, @pathImage);
-
-            filePath = @"Resources\descripcionTorneo.txt";
-            CreateTextFile(@filePath, descripcionTorneo.Text);
-
-            filePath = @"Resources\PlayersDatabase.txt";
+            filePath = "Resources\\FixedData\\PlayersDatabase.txt";
             if (!File.Exists(filePath))
             {
                 CreateTextFile(@filePath, "");
             }
 
-            filePath = @"Resources\CharactersList.txt";
+            filePath = "Resources\\FixedData\\CharactersList.txt";
             if (!File.Exists(filePath))
             {
                 CreateTextFile(@filePath, "");
-            }
-
-            
-            
-
-
+            }            
         }
    
        
@@ -134,14 +118,9 @@ namespace ScoreboardSSBU
                 //    ResetScorePlayer1();
                 //else if (modifier == Constants.ALT && key == Keys.S)
                 //    ResetScorePlayer2();
-
             }
             base.WndProc(ref m);
         }
-
-
-
-
 
 
         //_____________________________________________________________________________
@@ -152,7 +131,7 @@ namespace ScoreboardSSBU
             AutoCompleteStringCollection playersAutocomplete = new AutoCompleteStringCollection();
 
             //Read Player Database from " / Resources/PlayersDatabase.txt"
-            string[] lines = System.IO.File.ReadAllLines(@"Resources\PlayersDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines("Resources\\FixedData\\PlayersDatabase.txt");
             foreach (string line in lines)
             {
                 string name = line;
@@ -162,8 +141,8 @@ namespace ScoreboardSSBU
             }
 
             //Add name's list to textbox PlayerName1 and PlayerName2
-            PlayerName1.AutoCompleteCustomSource = playersAutocomplete;
-            PlayerName2.AutoCompleteCustomSource = playersAutocomplete;
+            NamePlayer1.AutoCompleteCustomSource = playersAutocomplete;
+            NamePlayer2.AutoCompleteCustomSource = playersAutocomplete;
         }
         //--------------------- End Action for autocomplete textbox suggestions--------
 
@@ -171,21 +150,36 @@ namespace ScoreboardSSBU
         //--------------------- Action for autocomplete textbox suggestions------------
         void UpdateCharacters()
         {
-
             //Read Player Database from "/Resources/PlayersDatabase.txt"
             var list = new AutoCompleteStringCollection();
 
-            string[] lines = System.IO.File.ReadAllLines(@"Resources\CharactersList.txt");
+            string[] lines = System.IO.File.ReadAllLines("Resources\\FixedData\\CharactersList.txt");
             foreach (string line in lines)
             {
                 string name = line;
                 list.Add(name); 
             }
-
             //Character Name textbox autocomplete
-            CharacterName1.AutoCompleteCustomSource = list;
-            CharacterName2.AutoCompleteCustomSource = list;
+            CharacterPlayer1.AutoCompleteCustomSource = list;
+            CharacterPlayer2.AutoCompleteCustomSource = list;
 
+            //This allows selection in combobox without autocomplete input
+            BindingList<string> ObjectBindingList1;
+            ObjectBindingList1 = new BindingList<string>();
+            foreach(string line in lines){
+                ObjectBindingList1.Add(line);
+            }
+            CharacterPlayer1.DataSource = ObjectBindingList1;
+            CharacterPlayer1.Text = "none";
+
+            BindingList<string> ObjectBindingList2;
+            ObjectBindingList2 = new BindingList<string>();
+            foreach (string line in lines)
+            {
+                ObjectBindingList2.Add(line);
+            }
+            CharacterPlayer2.DataSource = ObjectBindingList2;
+            CharacterPlayer2.Text = "none";
         }
         //--------------------- End Action for autocomplete textbox suggestions--------
         //_____________________________________________________________________________
@@ -199,7 +193,7 @@ namespace ScoreboardSSBU
             int score = Convert.ToInt32(ScorePlayer1.Text);
             //Write Score
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
             {
                 file.Write(Convert.ToString(score + 1));
             }
@@ -212,7 +206,7 @@ namespace ScoreboardSSBU
             {
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
                 {
                     file.Write(Convert.ToString(score - 1));
                 }
@@ -224,7 +218,7 @@ namespace ScoreboardSSBU
             int score = Convert.ToInt32(ScorePlayer2.Text);
             //Write Score
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
             {
                 file.Write(Convert.ToString(score + 1));
             }
@@ -237,7 +231,7 @@ namespace ScoreboardSSBU
             {
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
                 {
                     file.Write(Convert.ToString(score - 1));
                 }
@@ -247,6 +241,15 @@ namespace ScoreboardSSBU
 
         private void ResetScorePlayer1()
         {
+            int score = Convert.ToInt32(ScorePlayer1.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
+            {
+                file.Write(Convert.ToString(0));
+            }
+            ScorePlayer1.Text = Convert.ToString(0);
+            /*
             string message = "Está seguro que quiere resetear el marcador izquierdo?";
             string title = "Reset";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -256,17 +259,26 @@ namespace ScoreboardSSBU
                 int score = Convert.ToInt32(ScorePlayer1.Text);
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
                 {
                     file.Write(Convert.ToString(0));
                 }
                 ScorePlayer1.Text = Convert.ToString(0);
             }
-        
+            */
         }
 
         private void ResetScorePlayer2()
         {
+            int score = Convert.ToInt32(ScorePlayer2.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
+            {
+                file.Write(Convert.ToString(0));
+            }
+            ScorePlayer2.Text = Convert.ToString(0);
+            /*
             string message = "Está seguro que quiere resetear el marcador derecho?";
             string title = "Reset";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -276,12 +288,13 @@ namespace ScoreboardSSBU
                 int score = Convert.ToInt32(ScorePlayer2.Text);
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
                 {
                     file.Write(Convert.ToString(0));
                 }
                 ScorePlayer2.Text = Convert.ToString(0);
             }
+            */
         }
 
 
@@ -342,7 +355,7 @@ namespace ScoreboardSSBU
 
             //Write Score
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
             {
                 file.Write(Convert.ToString(score + 1));
             }
@@ -356,7 +369,7 @@ namespace ScoreboardSSBU
             {
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
                 {
                     file.Write(Convert.ToString(score - 1));
                 }
@@ -370,7 +383,7 @@ namespace ScoreboardSSBU
 
             //Write Score
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
             {
                 file.Write(Convert.ToString(score + 1));
             }
@@ -384,7 +397,7 @@ namespace ScoreboardSSBU
             {
                 //Write Score
                 using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
                 {
                     file.Write(Convert.ToString(score - 1));
                 }
@@ -394,30 +407,44 @@ namespace ScoreboardSSBU
         }
         private void ResetScorePlayer2_Button_Click(object sender, EventArgs e)
         {
+            int score = Convert.ToInt32(ScorePlayer2.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
+            {
+                file.Write(Convert.ToString(0));
+            }
+            ScorePlayer2.Text = Convert.ToString(0);
+            /*
             string message = "Está seguro que quiere resetear el marcador derecho?";
             string title = "Reset";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
             {
-
                 int score = Convert.ToInt32(ScorePlayer2.Text);
-
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
                 {
                     file.Write(Convert.ToString(0));
                 }
-
                 ScorePlayer2.Text = Convert.ToString(0);
             }
-
+            */
 
         }
         private void ResetScorePlayer1_Button_Click(object sender, EventArgs e)
         {
-
+            int score = Convert.ToInt32(ScorePlayer1.Text);
+            //Write Score
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
+            {
+                file.Write(Convert.ToString(0));
+            }
+            ScorePlayer1.Text = Convert.ToString(0);
+            /*
             string message = "Está seguro que quiere resetear el marcador izquierdo?";
             string title = "Reset";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -425,18 +452,15 @@ namespace ScoreboardSSBU
             if (result == DialogResult.Yes)
             {
                 int score = Convert.ToInt32(ScorePlayer1.Text);
-
                 //Write Score
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
                 {
                     file.Write(Convert.ToString(0));
                 }
-
                 ScorePlayer1.Text = Convert.ToString(0);
             }
-
-            
+            */
         }
         //-------------------------End Actions Score's Button -----------------------------
         //_________________________________________________________________________________
@@ -447,8 +471,8 @@ namespace ScoreboardSSBU
 
         //___________________________ Player's name and team to OBS _______________________
         //_________________________________________________________________________________
-        //------------------------- Add Player names to txt for OBS -----------------------        
-        private void PlayerName1_KeyDown(object sender, KeyEventArgs e)
+        //------------------------- Add Player names into .txt for OBS -----------------------        
+        private void NamePlayer1_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
@@ -456,13 +480,13 @@ namespace ScoreboardSSBU
                 //PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
                 //Write playername1
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
+                    new System.IO.StreamWriter("Resources\\NamePlayer1.txt"))
                 {
-                    file.Write(PlayerName1.Text);
+                    file.Write(NamePlayer1.Text);
                 }
             }
         }
-        private void PlayerName2_KeyDown(object sender, KeyEventArgs e)
+        private void NamePlayer2_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
@@ -470,32 +494,32 @@ namespace ScoreboardSSBU
                 //PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
                 //Write playername2
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
+                    new System.IO.StreamWriter("Resources\\NamePlayer2.txt"))
                 {
-                    file.Write(PlayerName2.Text);
+                    file.Write(NamePlayer2.Text);
                 }
             }
         }
-        private void PlayerName1_Leave(object sender, EventArgs e)
+        private void NamePlayer1_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
             //PlayerName1.Text = FirstLetterToUpper(PlayerName1.Text);
             //Write playername1
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
+                new System.IO.StreamWriter("Resources\\NamePlayer1.txt"))
             {
-                file.Write(PlayerName1.Text);
+                file.Write(NamePlayer1.Text);
             }
         }
-        private void PlayerName2_Leave(object sender, EventArgs e)
+        private void NamePlayer2_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
             //PlayerName2.Text = FirstLetterToUpper(PlayerName2.Text);
             //Write playername2
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
+                new System.IO.StreamWriter("Resources\\NamePlayer2.txt"))
             {
-                file.Write(PlayerName2.Text);
+                file.Write(NamePlayer2.Text);
             }
         }
         //------------------------- End Add Player names to txt for OBS -------------------
@@ -504,8 +528,8 @@ namespace ScoreboardSSBU
 
 
         //_________________________________________________________________________________
-        //------------------------- Add Players Team to txt for OBS -----------------------
-        private void PlayerTeam1_KeyDown(object sender, KeyEventArgs e)
+        //------------------------- Write Players Team into .txt for OBS -----------------------
+        private void TeamPlayer1_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
@@ -513,13 +537,13 @@ namespace ScoreboardSSBU
                 //PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
                 //Write PlayerTeam1
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
+                    new System.IO.StreamWriter("Resources\\TeamPlayer1.txt"))
                 {
-                    file.Write(PlayerTeam1.Text);
+                    file.Write(TeamPlayer1.Text);
                 }
             }
         }
-        private void PlayerTeam2_KeyDown(object sender, KeyEventArgs e)
+        private void TeamPlayer2_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
@@ -527,245 +551,180 @@ namespace ScoreboardSSBU
                 //PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
                 //Write PlayerTeam2
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
+                    new System.IO.StreamWriter("Resources\\TeamPlayer2.txt"))
                 {
-                    file.Write(PlayerTeam2.Text);
+                    file.Write(TeamPlayer2.Text);
                 }
             }
         }
-        private void PlayerTeam1_Leave(object sender, EventArgs e)
+        private void TeamPlayer1_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
             //PlayerTeam1.Text = PlayerTeam1.Text.ToUpper();
             //Write PlayerTeam1
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
+                new System.IO.StreamWriter("Resources\\TeamPlayer1.txt"))
             {
-                file.Write(PlayerTeam1.Text);
+                file.Write(TeamPlayer1.Text);
             }
         }
-        private void PlayerTeam2_Leave(object sender, EventArgs e)
+        private void TeamPlayer2_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
             //PlayerTeam2.Text = PlayerTeam2.Text.ToUpper();
             //Write PlayerTeam2
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
+                new System.IO.StreamWriter("Resources\\TeamPlayer2.txt"))
             {
-                file.Write(PlayerTeam2.Text);
+                file.Write(TeamPlayer2.Text);
             }
         }
         //------------------------- End Add Players Team to txt for OBS -------------------
         //_________________________________________________________________________________
 
 
+        public void ReplaceImage(string name, string player, string imageType, string imageColor)
+        {
+            try
+            {
+                string strColor = imageColor;
+                int result = -1; 
+                if(player == "Player1")
+                {
+                    strColor = ColorPlayer1.Text;
+                    result = Int32.Parse(strColor);
+                    result--;
+                    if (result < 0 || result > 7)
+                    {
+                        Console.WriteLine("No valid color");
+                        int auxThrow = Int32.Parse("exception");
+                    }
+                }
+                else if(player == "Player2")
+                {
+                    strColor = ColorPlayer2.Text;
+                    result = Int32.Parse(strColor);
+                    result--;
+                    if (result < 0 || result > 7)
+                    {
+                        Console.WriteLine("No valid color");
+                        int auxThrow = Int32.Parse("exception");
+                    }
+                }
+
+                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                var directory = System.IO.Path.GetDirectoryName(path);
+                string filepath = @directory + "\\" + imageType + "\\" + name + "_0" + result.ToString() + ".png";
+                Console.WriteLine(filepath);
+                if (!File.Exists(@filepath))
+                {
+                    try
+                    {
+                        File.Copy("Resources\\FixedData\\ImageEmpty" + imageType + ".png", "Resources\\" + imageType + player + ".png", true);
+                        if (player == "Player1")
+                        {
+                            pictureBox1.Image = Image.FromFile("Resources\\FixedData\\ImageEmpty" + imageType + ".png");
+                            pictureBox1.Refresh();
+                        }
+                        else if (player == "Player2")
+                        {
+                            pictureBox2.Image = Image.FromFile("Resources\\FixedData\\ImageEmpty" + imageType + ".png");
+                            pictureBox2.Refresh();
+                        }
+                        Console.WriteLine("No image found");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error copy Resources\\FixedData\\ImageEmpty" + imageType + ".png to Resources\\" + imageType + player + ".png");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        File.Copy(@filepath, "Resources\\" + imageType + player + ".png", true);
+                        if (player == "Player1")
+                        {
+                            pictureBox1.Image = Image.FromFile(@filepath);
+                            pictureBox1.Refresh();
+                        }
+                        else if (player == "Player2")
+                        {
+                            pictureBox2.Image = Image.FromFile(@filepath);
+                            pictureBox2.Refresh();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error copy " + imageType + "\\" + name + ".png to Resources\\" + imageType + player + ".png");
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse color from string to int");
+            }
+                    
+        }
+
 
         //_______________________________________________________________________________
         //------------------------- Add characters to txt for OBS -----------------------
-        private void CharacterName1_KeyDown(object sender, KeyEventArgs e)
+        private void CharacterPlayer1_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                string name = CharacterName1.Text.ToLower();
+                string name = CharacterPlayer1.Text.ToLower();
                
                 name = name.Replace(".", "");
                 name = name.Replace(" ", "_");
                 name = name.Replace("-", "_");
                 name = name.Replace("\n", "").Replace("\r", "");
-                
 
-                //Write CharacterName1
-                using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName1.txt"))
-                {
-                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                    var directory = System.IO.Path.GetDirectoryName(path);
-
-                    string filepath = @directory + @"\Icons\" + name + ".png";
-
-                    file.Write(@filepath);
-
-                    if (!File.Exists(@filepath))
-                    {
-                        try
-                        {
-                            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
-                            pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                            pictureBox1.Refresh();
-                            Console.WriteLine("No image found");
-                        }
-                        catch(Exception ex)
-                        {
-                            Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon1.png");
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                            pictureBox1.Image = Image.FromFile(@filepath);
-                            pictureBox1.Refresh();
-                        }
-                        catch(Exception ex)
-                        {
-                            Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon1.png");
-                        }
-                    }
-
-                }
+                ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+                ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);
             }
         }
-        private void CharacterName2_KeyDown(object sender, KeyEventArgs e)
+        private void CharacterPlayer2_KeyDown(object sender, KeyEventArgs e)
         {
             //Press enter to activate
             if (e.KeyCode == Keys.Enter)
             {
-                string name = CharacterName2.Text.ToLower();
-
+                string name = CharacterPlayer2.Text.ToLower();
 
                 name = name.Replace(".", "");
                 name = name.Replace(" ", "_");
                 name = name.Replace("-", "_");
                 name = name.Replace("\n", "").Replace("\r", "");
 
-                //Write CharacterName1
-                using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName2.txt"))
-                {
-                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                    var directory = System.IO.Path.GetDirectoryName(path);
-
-                    string filepath = @directory + @"\Icons\" + name + ".png";
-                    file.Write(@filepath);
-
-                    if (!File.Exists(@filepath))
-                    {
-                        try
-                        {
-                            File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
-                            pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                            pictureBox2.Refresh();
-                            Console.WriteLine("No image found");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon2.png");
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                            pictureBox2.Image = Image.FromFile(@filepath);
-                            pictureBox2.Refresh();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon2.png");
-                        }
-                    }
-
-                }
+                ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+                ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);                
             }
         }
-        private void CharacterName1_Leave(object sender, EventArgs e)
+        private void CharacterPlayer1_Leave(object sender, EventArgs e)
         {
-            string name = CharacterName1.Text.ToLower();
-
+            string name = CharacterPlayer1.Text.ToLower();
 
             name = name.Replace(".", "");
             name = name.Replace(" ", "_");
             name = name.Replace("-", "_");
             name = name.Replace("\n", "").Replace("\r", "");
 
-            //Write CharacterName1
-            using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\CharacterName1.txt"))
-            {
-                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                var directory = System.IO.Path.GetDirectoryName(path);
-
-                string filepath = @directory + @"\Icons\" + name + ".png";
-                file.Write(@filepath);
-                if (!File.Exists(@filepath))
-                {
-                    try
-                    {
-                        File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
-                        pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                        pictureBox1.Refresh();
-                        Console.WriteLine("No image found");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon1.png");
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                        pictureBox1.Image = Image.FromFile(@filepath);
-                        pictureBox1.Refresh();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon1.png");
-                    }
-                }
-            }
+            ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+            ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);            
         }
-        private void CharacterName2_Leave(object sender, EventArgs e)
+        private void CharacterPlayer2_Leave(object sender, EventArgs e)
         {
-            string name = CharacterName2.Text.ToLower();
-
+            string name = CharacterPlayer2.Text.ToLower();
 
             name = name.Replace(".", "");
             name = name.Replace(" ", "_");
             name = name.Replace("-", "_");
             name = name.Replace("\n", "").Replace("\r", "");
 
-            //Write CharacterName1
-            using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"Resources\CharacterName2.txt"))
-            {
-                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                var directory = System.IO.Path.GetDirectoryName(path);
-
-                string filepath = @directory + @"\Icons\" + name + ".png";
-                file.Write(@filepath);
-                if (!File.Exists(@filepath))
-                {
-                    try
-                    {
-                        File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
-                        pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                        pictureBox2.Refresh();
-                        Console.WriteLine("No image found");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"Error copy Resources\ImageEmpty.png to Resources\PlayerIcon2.png");
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                        pictureBox2.Image = Image.FromFile(@filepath);
-                        pictureBox2.Refresh();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"Error copy Icon\<name>.png to Resources\PlayerIcon2.png");
-                    }
-                }
-            }
+            ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+            ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);            
         }
         //------------------------- End Add characters to txt for OBS -------------------
         //_________________________________________________________________________________
@@ -774,27 +733,27 @@ namespace ScoreboardSSBU
 
         //_________________________________________________________________________________
         //------------------------- Add Description Tourney to txt for OBS ----------------
-        private void descripcionTorneo_KeyDown(object sender, KeyEventArgs e)
+        private void TournamentName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 //descripcionTorneo.Text = FirstLetterToUpper(descripcionTorneo.Text);
                 //Write descripcionTorneo
                 using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\descripcionTorneo.txt"))
+                    new System.IO.StreamWriter("Resources\\tournament_name.txt"))
                 {
-                    file.Write(descripcionTorneo.Text);
+                    file.Write(TournamentName.Text);
                 }
             }
         }
 
-        private void descripcionTorneo_Leave(object sender, EventArgs e)
+        private void TournamentName_Leave(object sender, EventArgs e)
         {
             //Leave textbox to activate
             using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\descripcionTorneo.txt"))
+                    new System.IO.StreamWriter("Resources\\tournament_name.txt"))
             {
-                file.Write(descripcionTorneo.Text);
+                file.Write(TournamentName.Text);
             }
         }
         //------------------------- End Add Description Tourney to txt for OBS ------------
@@ -890,255 +849,217 @@ namespace ScoreboardSSBU
             ghk6.Register();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+
+        private void ChangePositionPlayerAndScore_Click(object sender, EventArgs e)
         {
-            string strPlayerName1 = File.ReadAllText(@"Resources\PlayerName1.txt");
-            string strPlayerName2 = File.ReadAllText(@"Resources\PlayerName2.txt");
-
-            string strScorePlayer1 = File.ReadAllText(@"Resources\ScorePlayer1.txt");
-            string strScorePlayer2 = File.ReadAllText(@"Resources\ScorePlayer2.txt");
-
-            string strCharacterName1 = File.ReadAllText(@"Resources\CharacterName1.txt");
-            string strCharacterName2 = File.ReadAllText(@"Resources\CharacterName2.txt");
-
-            /*
-            string strPlayerTeam1 = File.ReadAllText(@"Resources\PlayerTeam1.txt");
-            string strPlayerTeam2 = File.ReadAllText(@"Resources\PlayerTeam2.txt");
-            */
-            PlayerName1.Text = strPlayerName2;
-            PlayerName2.Text = strPlayerName1;
+            //Change scores
+            string strScorePlayer1 = File.ReadAllText("Resources\\ScorePlayer1.txt");
+            string strScorePlayer2 = File.ReadAllText("Resources\\ScorePlayer2.txt");
 
             ScorePlayer1.Text = strScorePlayer2;
             ScorePlayer2.Text = strScorePlayer1;
 
-            string aux = CharacterName1.Text;
-            CharacterName1.Text = CharacterName2.Text;
-            CharacterName2.Text = aux;
-
-            /*
-            PlayerTeam1.Text = strPlayerTeam2;
-            PlayerTeam2.Text = strPlayerTeam1;
-            */
-
             using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
-            {
-                file.Write(strPlayerName2);
-            }
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
-            {
-                file.Write(strPlayerName1);
-            }
-
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer1.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer1.txt"))
             {
                 file.Write(strScorePlayer2);
             }
             using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\ScorePlayer2.txt"))
+                    new System.IO.StreamWriter("Resources\\ScorePlayer2.txt"))
             {
                 file.Write(strScorePlayer1);
             }
 
-
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName1.txt"))
-            {
-                file.Write(strCharacterName2);               
-
-            }
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName2.txt"))
-            {
-                file.Write(strCharacterName1);                
-            }
-
-            //PlayerIcon1 to PlayerIcon2          
-            string filepath = strCharacterName1;
-            if (!File.Exists(@filepath))
-            {
-                try
-                {
-                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
-                    pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                    pictureBox2.Refresh();
-                    Console.WriteLine("No image found");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                    pictureBox2.Image = Image.FromFile(@filepath);
-                    pictureBox2.Refresh();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
-                }
-            }
-
-
-            //PlayerIcon2 to PlayerIcon1
-            filepath = strCharacterName2;
-            if (!File.Exists(@filepath))
-            {
-                try
-                {
-                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
-                    pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                    pictureBox1.Refresh();
-                    Console.WriteLine("No image found");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                    pictureBox1.Image = Image.FromFile(@filepath);
-                    pictureBox1.Refresh();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
-                }
-            }
-
-
-            /*
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerTeam1.txt"))
-            {
-                file.Write(strPlayerTeam2);
-            }
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerTeam2.txt"))
-            {
-                file.Write(strPlayerTeam1);
-            }
-            */
+            //Change images and names
+            ChangePositionPlayerOnly.PerformClick();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ChangePositionPlayerOnly_Click(object sender, EventArgs e)
         {
-            string strPlayerName1 = File.ReadAllText(@"Resources\PlayerName1.txt");
-            string strPlayerName2 = File.ReadAllText(@"Resources\PlayerName2.txt");
+            //Change images and names only
+            string strNamePlayer1 = File.ReadAllText("Resources\\NamePlayer1.txt");
+            string strNamePlayer2 = File.ReadAllText("Resources\\NamePlayer2.txt");
 
-            string strCharacterName1 = File.ReadAllText(@"Resources\CharacterName1.txt");
-            string strCharacterName2 = File.ReadAllText(@"Resources\CharacterName2.txt");
+            NamePlayer1.Text = strNamePlayer2;
+            NamePlayer2.Text = strNamePlayer1;
 
+            string aux = CharacterPlayer1.Text;
+            CharacterPlayer1.Text = CharacterPlayer2.Text;
+            CharacterPlayer2.Text = aux;
 
-            PlayerName1.Text = strPlayerName2;
-            PlayerName2.Text = strPlayerName1;
-
-
-            string aux = CharacterName1.Text;
-            CharacterName1.Text = CharacterName2.Text;
-            CharacterName2.Text = aux;
-
-
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName1.txt"))
-            {
-                file.Write(strPlayerName2);
-            }
-            using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\PlayerName2.txt"))
-            {
-                file.Write(strPlayerName1);
-            }
+            string aux1 = ColorPlayer1.Text;
+            ColorPlayer1.Text = ColorPlayer2.Text;
+            ColorPlayer2.Text = aux1;
 
             using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName1.txt"))
+                    new System.IO.StreamWriter("Resources\\NamePlayer1.txt"))
             {
-                file.Write(strCharacterName2);
-
+                file.Write(strNamePlayer2);
             }
             using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"Resources\CharacterName2.txt"))
+                    new System.IO.StreamWriter("Resources\\NamePlayer2.txt"))
             {
-                file.Write(strCharacterName1);
+                file.Write(strNamePlayer1);
             }
 
+            //update images player1
+            string strCharacterName1 = CharacterPlayer1.Text.ToLower();
+            strCharacterName1 = strCharacterName1.Replace(".", "");
+            strCharacterName1 = strCharacterName1.Replace(" ", "_");
+            strCharacterName1 = strCharacterName1.Replace("-", "_");
+            strCharacterName1 = strCharacterName1.Replace("\n", "").Replace("\r", "");
 
-            //PlayerIcon1 to PlayerIcon2          
-            string filepath = strCharacterName1;
-            if (!File.Exists(@filepath))
-            {
-                try
-                {
-                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon2.png", true);
-                    pictureBox2.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                    pictureBox2.Refresh();
-                    Console.WriteLine("No image found");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.Copy(@filepath, @"Resources\PlayerIcon2.png", true);
-                    pictureBox2.Image = Image.FromFile(@filepath);
-                    pictureBox2.Refresh();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon1 to PlayerIcon2");
-                }
-            }
+            ReplaceImage(strCharacterName1, "Player1", "Portrait", ColorPlayer1.Text);
+            ReplaceImage(strCharacterName1, "Player1", "Icon", ColorPlayer1.Text);
 
+            //update images player2
+            string strCharacterName2 = CharacterPlayer2.Text.ToLower();
+            strCharacterName2 = strCharacterName2.Replace(".", "");
+            strCharacterName2 = strCharacterName2.Replace(" ", "_");
+            strCharacterName2 = strCharacterName2.Replace("-", "_");
+            strCharacterName2 = strCharacterName2.Replace("\n", "").Replace("\r", "");
 
-            //PlayerIcon2 to PlayerIcon1
-            filepath = strCharacterName2;
-            if (!File.Exists(@filepath))
-            {
-                try
-                {
-                    File.Copy(@"Resources\ImageEmpty.png", @"Resources\PlayerIcon1.png", true);
-                    pictureBox1.Image = Image.FromFile(@"Resources\ImageEmpty.png");
-                    pictureBox1.Refresh();
-                    Console.WriteLine("No image found");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.Copy(@filepath, @"Resources\PlayerIcon1.png", true);
-                    pictureBox1.Image = Image.FromFile(@filepath);
-                    pictureBox1.Refresh();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(@"Error copy PlayerIcon2 to PlayerIcon1");
-                }
-            }
-
+            ReplaceImage(strCharacterName2, "Player2", "Portrait", ColorPlayer2.Text);
+            ReplaceImage(strCharacterName2, "Player2", "Icon", ColorPlayer2.Text);            
         }
 
-        private void PlayerName1_TextChanged(object sender, EventArgs e)
-        {
 
+		private void CharacterPlayer1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+            string name = CharacterPlayer1.Text.ToLower();
+
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+            ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);            
+        }
+
+		private void CharacterPlayer2_SelectedIndexChanged(object sender, EventArgs e)
+		{
+            string name = CharacterPlayer2.Text.ToLower();
+
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+            ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);            
+        }
+
+        private void ColorPlayer1_Leave(object sender, EventArgs e)
+        {
+            string name = CharacterPlayer1.Text.ToLower();
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+            ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);
+        }
+
+        private void ColorPlayer1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = CharacterPlayer1.Text.ToLower();
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+            ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);
+        }
+
+        private void ColorPlayer1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Press enter to activate
+            if (e.KeyCode == Keys.Enter)
+            {
+                string name = CharacterPlayer1.Text.ToLower();
+                name = name.Replace(".", "");
+                name = name.Replace(" ", "_");
+                name = name.Replace("-", "_");
+                name = name.Replace("\n", "").Replace("\r", "");
+
+                ReplaceImage(name, "Player1", "Portrait", ColorPlayer1.Text);
+                ReplaceImage(name, "Player1", "Icon", ColorPlayer1.Text);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void ColorPlayer2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = CharacterPlayer2.Text.ToLower();
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+            ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);
+        }
+
+        private void ColorPlayer2_Leave(object sender, EventArgs e)
+        {
+            string name = CharacterPlayer2.Text.ToLower();
+            name = name.Replace(".", "");
+            name = name.Replace(" ", "_");
+            name = name.Replace("-", "_");
+            name = name.Replace("\n", "").Replace("\r", "");
+
+            ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+            ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);
+        }
+
+        private void ColorPlayer2_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            //Press enter to activate
+            if (e.KeyCode == Keys.Enter)
+            {
+                string name = CharacterPlayer2.Text.ToLower();
+                name = name.Replace(".", "");
+                name = name.Replace(" ", "_");
+                name = name.Replace("-", "_");
+                name = name.Replace("\n", "").Replace("\r", "");
+
+                ReplaceImage(name, "Player2", "Portrait", ColorPlayer2.Text);
+                ReplaceImage(name, "Player2", "Icon", ColorPlayer2.Text);
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void TournamentInformation_Leave(object sender, EventArgs e)
+        {
+            //Leave textbox to activate
+            using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter("Resources\\tournament_information.txt"))
+            {
+                file.Write(TournamentName.Text);
+            }
+        }
+
+        private void TournamentInformation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //descripcionTorneo.Text = FirstLetterToUpper(descripcionTorneo.Text);
+                //Write descripcionTorneo
+                using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter("Resources\\tournament_information.txt"))
+                {
+                    file.Write(TournamentName.Text);
+                }
+            }
         }
     }
 }

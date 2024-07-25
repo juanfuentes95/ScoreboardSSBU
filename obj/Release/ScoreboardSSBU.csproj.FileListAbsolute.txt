@@ -7,3 +7,12 @@ C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Propert
 C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.GenerateResource.cache
 C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.CoreCompileInputs.cache
 C:\Users\Juan\Documents\GitHub\ScoreboardSSBU\obj\Release\scoreboard_ssbu.exe
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\bin\Release\scoreboard_ssbu.exe.config
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\bin\Release\scoreboard_ssbu.exe
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.csproj.AssemblyReference.cache
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.Form1.resources
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.Form2.resources
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.Properties.Resources.resources
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.csproj.GenerateResource.cache
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.csproj.CoreCompileInputs.cache
+C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\scoreboard_ssbu.exe
