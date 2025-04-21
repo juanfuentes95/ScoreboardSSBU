@@ -1,0 +1,11 @@
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\bin\Debug\scoreboard_ssbu.exe.config
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\bin\Debug\scoreboard_ssbu.exe
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\bin\Debug\scoreboard_ssbu.pdb
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.csproj.AssemblyReference.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.Form1.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.Form2.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.Properties.Resources.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.csproj.GenerateResource.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\ScoreboardSSBU.csproj.CoreCompileInputs.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\scoreboard_ssbu.exe
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Debug\scoreboard_ssbu.pdb

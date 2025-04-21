@@ -16,3 +16,12 @@ C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.Properti
 C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.csproj.GenerateResource.cache
 C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\ScoreboardSSBU.csproj.CoreCompileInputs.cache
 C:\Users\juanf\Desktop\ScoreboardSSBU-master\obj\Release\scoreboard_ssbu.exe
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\bin\Release\scoreboard_ssbu.exe.config
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\bin\Release\scoreboard_ssbu.exe
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.AssemblyReference.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Form1.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Form2.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.Properties.Resources.resources
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.GenerateResource.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\ScoreboardSSBU.csproj.CoreCompileInputs.cache
+C:\Users\juanf\source\repos\juanfuentes95\ScoreboardSSBU\obj\Release\scoreboard_ssbu.exe
