@@ -98,6 +98,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.BestOfBox = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -351,6 +353,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.BestOfBox);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label22);
@@ -594,10 +598,10 @@
             this.TournamentInformation.Location = new System.Drawing.Point(19, 78);
             this.TournamentInformation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TournamentInformation.Name = "TournamentInformation";
-            this.TournamentInformation.Size = new System.Drawing.Size(781, 26);
+            this.TournamentInformation.Size = new System.Drawing.Size(649, 26);
             this.TournamentInformation.TabIndex = 43;
             this.TournamentInformation.TabStop = false;
-            this.TournamentInformation.Text = "Winner Round 1 - Bo3";
+            this.TournamentInformation.Text = "Winner Round 1";
             this.TournamentInformation.TextChanged += new System.EventHandler(this.TournamentInformation_TextChanged);
             this.TournamentInformation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TournamentInformation_KeyDown);
             this.TournamentInformation.Leave += new System.EventHandler(this.TournamentInformation_Leave);
@@ -634,7 +638,7 @@
             this.label12.Location = new System.Drawing.Point(15, 59);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(795, 20);
+            this.label12.Size = new System.Drawing.Size(653, 20);
             this.label12.TabIndex = 42;
             this.label12.Text = "Tournament Information";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -911,6 +915,31 @@
             this.label23.Text = "v1.9";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BestOfBox
+            // 
+            this.BestOfBox.FormattingEnabled = true;
+            this.BestOfBox.Items.AddRange(new object[] {
+            "Bo1",
+            "Bo3",
+            "Bo5",
+            "Bo7"});
+            this.BestOfBox.Location = new System.Drawing.Point(676, 76);
+            this.BestOfBox.Name = "BestOfBox";
+            this.BestOfBox.Size = new System.Drawing.Size(121, 28);
+            this.BestOfBox.TabIndex = 64;
+            this.BestOfBox.SelectedIndexChanged += new System.EventHandler(this.BestOfBox_SelectedIndexChanged);
+            this.BestOfBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BestOfBox_KeyDown);
+            this.BestOfBox.Leave += new System.EventHandler(this.BestOfBox_Leave);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(707, 56);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 20);
+            this.label24.TabIndex = 65;
+            this.label24.Text = "Best of";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1041,6 +1070,8 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox BestOfBox;
+        private System.Windows.Forms.Label label24;
     }
 }
 

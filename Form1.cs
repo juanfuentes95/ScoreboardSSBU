@@ -41,6 +41,8 @@ namespace ScoreboardSSBU
             userP1 = "";
             userP2 = "";
 
+            BestOfBox.SelectedIndex = 1;
+            
             // Player 1
             SocialNetPlayer1.KeyDown += SocialNetPlayer1_KeyDown;
             SocialNetPlayer1.Leave += SocialNetPlayer1_Leave;
@@ -114,7 +116,7 @@ namespace ScoreboardSSBU
             File.Copy("Resources\\FixedData\\ImageEmptySocialNetIcon.png", "Resources\\SocialNetCaster1.png", true);
             File.Copy("Resources\\FixedData\\ImageEmptySocialNetIcon.png", "Resources\\SocialNetCaster2.png", true);
 
-
+            File.Copy("Resources\\FixedData\\ImageEmptyBestOf.png", "Resources\\BestOf.png", true);
 
 
             string filePath = "";
@@ -167,6 +169,8 @@ namespace ScoreboardSSBU
             CreateTextFile(@filePath, TournamentName.Text);
             filePath = "Resources\\tournament_information.txt";
             CreateTextFile(@filePath, TournamentInformation.Text);
+            filePath = "Resources\\BestOf.txt";
+            CreateTextFile(@filePath, BestOfBox.SelectedItem.ToString());
 
             filePath = "Resources\\FixedData\\PlayersDatabase.txt";
             if (!File.Exists(filePath))
@@ -178,7 +182,8 @@ namespace ScoreboardSSBU
             if (!File.Exists(filePath))
             {
                 CreateTextFile(@filePath, "");
-            }            
+            }
+            ReplaceBestOfImage(BestOfBox.SelectedItem.ToString());
         }
    
        
@@ -776,6 +781,27 @@ namespace ScoreboardSSBU
             catch (Exception ex)
             {
                 Console.WriteLine("Error copy SocialnetIcon\\" + socialNetName + ".png to Resources\\SocialNet" + player + ".png");
+            }
+        }
+
+        public void ReplaceBestOfImage(string BestOfName)
+        {
+            try
+            {
+                if (File.Exists("BestOfIcon\\" + BestOfName + ".png"))
+                {
+                    File.Copy("BestOfIcon\\" + BestOfName + ".png", "Resources\\BestOf.png", true);
+                    Console.WriteLine("BestOfIcon\\" + BestOfName + ".png to Resources\\BestOf.png");
+                }
+                else
+                {
+                    File.Copy("Resources\\FixedData\\ImageEmptyBestOfIcon.png", "Resources\\BestOf.png", true);
+                    Console.WriteLine("No Best of image change to default Resources\\FixedData\\ImageEmptyBestOfIcon.png to Resources\\BestOf.png");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error copy BestOfIcon\\" + BestOfName + ".png to Resources\\BestOf.png");
             }
         }
 
@@ -1736,6 +1762,49 @@ namespace ScoreboardSSBU
         private void label26_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BestOfBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Press enter to activate
+            if (e.KeyCode == Keys.Enter)
+            {
+                string bestof = BestOfBox.SelectedItem.ToString();
+
+                ReplaceBestOfImage(bestof);
+
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter("Resources\\BestOf.txt"))
+                {
+                    file.Write(bestof);
+                }
+            }
+        }
+
+        private void BestOfBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string bestof = BestOfBox.SelectedItem.ToString();
+
+            ReplaceBestOfImage(bestof);
+
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter("Resources\\BestOf.txt"))
+            {
+                file.Write(bestof);
+            }
+        }
+
+        private void BestOfBox_Leave(object sender, EventArgs e)
+        {
+            string bestof = BestOfBox.SelectedItem.ToString();
+
+            ReplaceBestOfImage(bestof);
+
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter("Resources\\BestOf.txt"))
+            {
+                file.Write(bestof);
+            }
         }
     }
 }
