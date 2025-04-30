@@ -117,6 +117,7 @@ namespace ScoreboardSSBU
             File.Copy("Resources\\FixedData\\ImageEmptySocialNetIcon.png", "Resources\\SocialNetCaster2.png", true);
 
             File.Copy("Resources\\FixedData\\ImageEmptyBestOf.png", "Resources\\BestOf.png", true);
+            File.Copy("Resources\\FixedData\\ImageEmptyBestOfTitle.png", "Resources\\BestOfTitle.png", true);
 
 
             string filePath = "";
@@ -786,6 +787,8 @@ namespace ScoreboardSSBU
 
         public void ReplaceBestOfImage(string BestOfName)
         {
+
+            //best of match scene
             try
             {
                 if (File.Exists("BestOfIcon\\" + BestOfName + ".png"))
@@ -802,6 +805,26 @@ namespace ScoreboardSSBU
             catch (Exception ex)
             {
                 Console.WriteLine("Error copy BestOfIcon\\" + BestOfName + ".png to Resources\\BestOf.png");
+            }
+
+            //Best of title scene
+
+            try
+            {
+                if (File.Exists("BestOfTitle\\" + BestOfName + ".png"))
+                {
+                    File.Copy("BestOfTitle\\" + BestOfName + ".png", "Resources\\BestOfTitle.png", true);
+                    Console.WriteLine("BestOfTitle\\" + BestOfName + ".png to Resources\\BestOfTitle.png");
+                }
+                else
+                {
+                    File.Copy("Resources\\FixedData\\ImageEmptyBestOfTitle.png", "Resources\\BestOfTitle.png", true);
+                    Console.WriteLine("No Best of image change to default Resources\\FixedData\\ImageEmptyBestOfTitle.png to Resources\\BestOfTitle.png");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error copy BestOfTitle\\" + BestOfName + ".png to Resources\\BestOfTitle.png");
             }
         }
 
